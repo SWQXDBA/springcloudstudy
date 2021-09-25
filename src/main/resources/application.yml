@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: userService
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/cloudexample
+    username: root
+    password: q12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+debug: true
