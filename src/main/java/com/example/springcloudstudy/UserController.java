@@ -26,7 +26,7 @@ public class UserController {
     @RequestMapping("/{userid}")
     public UserAndBill getUser(@PathVariable("userid") Long userid){
         User user = userDao.getUserById(userid);
-        Bill bill = restTemplate.getForObject("http://localhost:8082/billuser/" + user.getId(), Bill.class);
+        Bill bill = restTemplate.getForObject("http://billservice/billuser/" + user.getId(), Bill.class);
         UserAndBill userAndBill = new UserAndBill();
         userAndBill.setUser(user);
         userAndBill.setBill(bill);

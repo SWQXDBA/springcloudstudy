@@ -2,7 +2,7 @@ server:
   port: 8082
 spring:
   application:
-    name: userService
+    name: billService
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/cloudexample
     username: root
@@ -12,3 +12,8 @@ spring:
     hibernate:
       ddl-auto: update
 debug: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10001/eureka #eureka的地址信息
