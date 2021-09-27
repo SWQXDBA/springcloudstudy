@@ -1,6 +1,10 @@
 server:
   port: 8081
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
   application:
     name: userService
   datasource:
@@ -12,7 +16,8 @@ spring:
     hibernate:
       ddl-auto: update
 debug: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:10001/eureka #eureka的地址信息
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:10001/eureka #eureka的地址信息
+
