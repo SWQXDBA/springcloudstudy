@@ -3,8 +3,9 @@ server:
 spring:
   cloud:
     nacos:
+      server-addr: 127.0.0.1:8848
       discovery:
-        server-addr: 127.0.0.1:8848
+        cluster-name: G1
   application:
     name: userService
   datasource:
@@ -16,6 +17,7 @@ spring:
     hibernate:
       ddl-auto: update
 debug: true
+
 #eureka:
 #  client:
 #    service-url:
