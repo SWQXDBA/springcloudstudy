@@ -4,8 +4,9 @@ spring:
   cloud:
     nacos:
       server-addr: 127.0.0.1:8848
-      discovery:
-        cluster-name: G1
+#      discovery:
+#        cluster-name: G1 #集群信息
+#        namespace: e095a5f7-4672-4c1d-9ff1-f233784e498c #命名空间
 
   application:
     name: billService
