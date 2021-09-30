@@ -6,15 +6,27 @@ spring:
   cloud:
     nacos:
       server-addr: 127.0.0.1:8848
-    gateway: #网管路由配置
+    gateway: #网关路由配置
+      discovery:
+        locator:
+          #开启表示根据微服务名称映射，就是微服务名称拼接到url中可以直接访问，但是不推荐这么使用 容易暴露微服务 #访问的时候需要加上服务名
+          #如果是true 则需要userService/user
+          #如果不开启 只要/user 建议设置为false避免暴露微服务名
+          enabled: false
+
       routes:
         - id: bill_service #路由id 自定义，只要唯一即可
          #uri: http://127.0.0.1:8081 #路由器的目标地址 http是固定地址
           uri: lb://billService #路由的目标地址 lb就是负载均衡loadBalance，后面跟服务名称
           predicates: #路由断言，也就是判断请求是否符合路由规则的条件
-            - Path=//billuser/** #这个是按照路径匹配，只要以/user/开头就符合要求
+            - Path=/billuser/** #这个是按照路径匹配，只要以/user/开头就符合要求
+#          filters:
+#            - StripPrefix=1 #path路由加去掉前缀信息
         - id: user_service #路由id 自定义，只要唯一即可
           #uri: http://127.0.0.1:8081 #路由器的目标地址 http是固定地址
           uri: lb://userService #路由的目标地址 lb就是负载均衡loadBalance，后面跟服务名称
           predicates: #路由断言，也就是判断请求是否符合路由规则的条件
-            - Path=//user/** #这个是按照路径匹配，只要以/user/开头就符合要求
+            - Path=/user/** #这个是按照路径匹配，只要以/user/开头就符合要求 并且被发送到uri/Path的路径去 比如说userService/user/**
+#          filters:
+#            - StripPrefix=1 #path路由加去掉前缀信息
+debug: true
