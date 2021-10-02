@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    host: 192.168.241.131
+    port: 5672
+    virtual-host: / #虚拟主机 这里的/是虚拟主机名 可以在后台创建其他的虚拟主机 不同的虚拟主机之间互相隔离
+    username: guest
+    password: guest
+server:
+  port: 8071
